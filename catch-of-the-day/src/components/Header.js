@@ -1,8 +1,6 @@
 import React from 'react';
 
-class Header extends React.Component {
-    render(){
-        return (
+const Header = (props) => (
             <React.Fragment>
             <header className='top'>
                 <h1>
@@ -18,7 +16,5 @@ class Header extends React.Component {
             </header>
             </React.Fragment>
         )
-}
-}
 
 export default Header;
