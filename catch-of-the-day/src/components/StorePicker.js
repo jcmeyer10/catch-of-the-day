@@ -15,6 +15,7 @@ class StorePicker extends React.Component {
 
             // change the page to the store / whatever user entered
 
+            
         }
         return (
         <React.Fragment>
