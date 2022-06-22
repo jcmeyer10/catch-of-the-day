@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Header = (props) => (
+const Header = props => (
             <React.Fragment>
             <header className='top'>
                 <h1>
@@ -11,7 +11,7 @@ const Header = (props) => (
                         </span> 
                     Day</h1>
                 <h3 className='tagline'>
-                <span>Fresh Seafood Daily</span>
+                <span>'{props.tagline}'</span>
             </h3>
             </header>
             </React.Fragment>
