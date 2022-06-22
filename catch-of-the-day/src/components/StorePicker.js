@@ -11,10 +11,10 @@ class StorePicker extends React.Component {
         // get the text from that input. golden rule is don't touch the DOM
         // meaning don't go out and f   ind DOM elements for info using selectors
         // we will sync the data from the form to the 'state'` using refs
-        console.log("myInput value", this.myInput.current.value);
+        const storeName = this.myInput.current.value
 
         // change the page to the store / whatever user entered
-
+        this.props.history.push(`/store/${storeName}`)
 
     }
 

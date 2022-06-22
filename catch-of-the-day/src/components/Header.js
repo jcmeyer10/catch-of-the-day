@@ -11,7 +11,7 @@ const Header = (props) => (
                         </span> 
                     Day</h1>
                 <h3 className='tagline'>
-                <span>{this.props.tagline}</span>
+                <span>Fresh Seafood Daily</span>
             </h3>
             </header>
             </React.Fragment>
