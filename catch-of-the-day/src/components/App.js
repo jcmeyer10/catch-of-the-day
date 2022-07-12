@@ -16,6 +16,14 @@ class App extends React.Component {
     }
 
     componentDidMount(){
+        //first reinstate local storage
+        const localStorageRef = localStorage.getItem(this.props.match.params.storeId)
+
+        //checking for new store
+        if(localStorageRef) {
+            this.setState({ order: JSON.parse(localStorageRef) })
+        }
+
         // different ref directly related to firebase
         this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
             context: this,
@@ -23,6 +31,11 @@ class App extends React.Component {
         })
 
         console.log(`${this.props.match.params.storeId}/fishes`)
+    }
+
+    componentDidUpdate() {
+        localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
+        console.log(this.state.order);
     }
 
     componentWillUnmount() {
