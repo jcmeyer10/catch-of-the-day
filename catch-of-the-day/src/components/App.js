@@ -4,6 +4,7 @@ import Inventory from './Inventory'
 import Order from './Order'
 import Fish from './Fish'
 import sampleFishes from '../sample-fishes'
+import base from '../base'
 
 class App extends React.Component {
     // methods that update state and where state is stored have to be on
@@ -12,6 +13,20 @@ class App extends React.Component {
     state = {
         fishes: {},
         order: {}
+    }
+
+    componentDidMount(){
+        // different ref directly related to firebase
+        this.ref = base.syncState(`${this.props.match.params.storeId}/fishes`, {
+            context: this,
+            state: 'fishes'
+        })
+
+        console.log(`${this.props.match.params.storeId}/fishes`)
+    }
+
+    componentWillUnmount() {
+        base.removeBinding(this.ref);
     }
 
     addFish = fish => {
