@@ -86,6 +86,16 @@ class App extends React.Component {
 
     }
 
+    removeFromOrder = (key) => {
+        const order = {...this.state.order};
+
+        // since we are not writing to firebase, just local storage
+        // we don't need to set it to null
+        delete order[key];
+
+        this.setState({ order })
+    }
+
     loadSampleFishes = () => {
         console.log("click")
         this.setState({fishes: sampleFishes })
@@ -99,7 +109,22 @@ class App extends React.Component {
         order[key] = order[key] + 1 || 1;
 
         // 3. call setState to update state object
-        this.setState( {order } )
+        this.setState( { order } )
+    }
+
+    removeOneItem = key => {
+            // 1. take a copy of the fishes
+            const order = {...this.state.order}
+    
+            // 2. Either add to the order or the number in our order
+            if (order[key] > 0) {
+                order[key] = order[key] - 1;
+            } else {
+                delete order[key];
+            }
+    
+            // 3. call setState to update state object
+            this.setState( { order } )
     }
 
     // if you need key twice in the same map, you need to create a new variable and set it to key
@@ -119,7 +144,12 @@ class App extends React.Component {
                     </ul>
                 </div>
                 
-                <Order fishes={this.state.fishes} order={this.state.order}/>
+                <Order 
+                removeFromOrder={this.removeFromOrder}
+                removeOneItem={this.removeOneItem}
+                fishes={this.state.fishes}
+                order={this.state.order}
+                />
 
                 <Inventory 
                     addFish={this.addFish}
