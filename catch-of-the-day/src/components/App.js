@@ -96,6 +96,22 @@ class App extends React.Component {
         this.setState({ order })
     }
 
+    removeOneItem = key => {
+        // 1. take a copy of the fishes
+        const order = {...this.state.order}
+
+        // 2. Either add to the order or the number in our order
+        if (order[key] > 1) {
+            order[key] = order[key] - 1;
+            this.setState( { order } )
+        } else if (order[key] === 1) {
+            delete order[key];
+            this.setState( { order: {} } )
+        } else {
+            return;
+        }
+}
+
     loadSampleFishes = () => {
         console.log("click")
         this.setState({fishes: sampleFishes })
@@ -112,20 +128,6 @@ class App extends React.Component {
         this.setState( { order } )
     }
 
-    removeOneItem = key => {
-            // 1. take a copy of the fishes
-            const order = {...this.state.order}
-    
-            // 2. Either add to the order or the number in our order
-            if (order[key] > 0) {
-                order[key] = order[key] - 1;
-            } else {
-                delete order[key];
-            }
-    
-            // 3. call setState to update state object
-            this.setState( { order } )
-    }
 
     // if you need key twice in the same map, you need to create a new variable and set it to key
 
