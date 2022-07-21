@@ -5,6 +5,7 @@ import Order from './Order'
 import Fish from './Fish'
 import sampleFishes from '../sample-fishes'
 import base from '../base'
+import PropTypes from 'prop-types'
 
 class App extends React.Component {
     // methods that update state and where state is stored have to be on
@@ -15,6 +16,9 @@ class App extends React.Component {
         order: {}
     }
 
+    static propTypes = {
+        match: PropTypes.object
+    }
     componentDidMount(){
         //first reinstate local storage
         const localStorageRef = localStorage.getItem(this.props.match.params.storeId)
