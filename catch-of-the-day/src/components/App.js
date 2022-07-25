@@ -110,7 +110,7 @@ class App extends React.Component {
             this.setState( { order } )
         } else if (order[key] === 1) {
             delete order[key];
-            this.setState( { order: {} } )
+            this.setState( { order } )
         } else {
             return;
         }

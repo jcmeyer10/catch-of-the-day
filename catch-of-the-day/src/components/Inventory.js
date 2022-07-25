@@ -22,10 +22,11 @@ class Inventory extends React.Component {
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.authHandler({user})
-            }
-        })
+          if (user) {
+            this.authHandler({ user });
+          }
+        });
+      }
     authHandler = async (authData) => {
         // 1. look up current store in firebase database
         // use await to 
@@ -62,8 +63,7 @@ class Inventory extends React.Component {
             uid: null
         })
       }
-    }
-
+    
     render(){
 
         const logout = <button onClick={this.logout}>Log Out!</button>
